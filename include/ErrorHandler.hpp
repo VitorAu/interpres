@@ -3,7 +3,8 @@
 
 #include <string>
 
-class ErrorHandler {
+class ErrorHandler
+{
   public:
     ErrorHandler();
     ~ErrorHandler();

@@ -1,4 +1,5 @@
 #include "Token.hpp"
+
 #include "TokenType.hpp"
 #include <string>
 

@@ -8,7 +8,7 @@ class Interpres
   public:
     Interpres();
     ~Interpres();
-    
+
     const std::string ReadFile(std::string m_filePath);
     void RunFile(std::string m_filePath);
     void RunPrompt();

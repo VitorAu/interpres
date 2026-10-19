@@ -2,7 +2,6 @@
 #define TOKEN_HPP
 
 #include "TokenType.hpp"
-
 #include <cstddef>
 #include <string>
 #include <variant>

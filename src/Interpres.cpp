@@ -1,14 +1,14 @@
 #include "Interpres.hpp"
+
 #include "ErrorHandler.hpp"
 #include "Scanner.hpp"
-
 #include <cstddef>
 #include <cstdlib>
 #include <fstream>
 #include <ios>
 #include <iostream>
-#include <vector>
 #include <string>
+#include <vector>
 
 Interpres::Interpres() = default;
 Interpres::~Interpres() = default;
@@ -33,11 +33,11 @@ const std::string Interpres::ReadFile(std::string filePath)
 }
 
 void Interpres::RunFile(std::string filePath)
-{   
+{
     std::string fileContent = this->ReadFile(filePath);
     this->Run(fileContent);
 
-    if(ErrorHandler::m_hadError) exit(EXIT_FAILURE);
+    if (ErrorHandler::m_hadError) exit(EXIT_FAILURE);
 }
 
 void Interpres::RunPrompt()

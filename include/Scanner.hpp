@@ -13,7 +13,7 @@ class Scanner
 
     std::vector<Token> m_tokens;
     inline static const std::map<std::string, TokenType> m_keywords = {
-      // clang-format off
+        // clang-format off
       {"and", TokenType::AND},
       {"class", TokenType::CLASS},
       {"else", TokenType::ELSE},
@@ -30,7 +30,7 @@ class Scanner
       {"true", TokenType::TRUE},
       {"var", TokenType::VAR},
       {"while", TokenType::WHILE}
-      // clang-format on
+        // clang-format on
     };
 
     int m_start = 0;
@@ -46,7 +46,7 @@ class Scanner
     char Advance();
     char Peek();
     char PeekNext();
-    
+
     void String();
     void Number();
     void Identifier();

@@ -1,4 +1,5 @@
 #include "Scanner.hpp"
+
 #include "ErrorHandler.hpp"
 #include "TokenType.hpp"
 #include <string>
@@ -98,7 +99,7 @@ void Scanner::Identifier()
 
     TokenType type;
     auto it = this->m_keywords.find(text);
-    if(it != this->m_keywords.end()) type = it->second;
+    if (it != this->m_keywords.end()) type = it->second;
     else type = TokenType::IDENTIFIER;
 
     this->AddToken(type);
