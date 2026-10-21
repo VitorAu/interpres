@@ -32,3 +32,9 @@ const std::string Token::Stringify() const
     std::string aux = TokenTypeToString(this->m_tokenType) + " " + this->m_lexeme + " " + literalText;
     return aux;
 }
+
+const std::string Token::GetLexeme() const
+{
+  std::string aux = this->m_lexeme;
+  return aux;
+}

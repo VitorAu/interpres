@@ -9,15 +9,15 @@ class Grouping;
 class Literal;
 class Unary;
 
-class ExprVisitor
+template <typename T> class ExprVisitor
 {
   public:
-    virtual ~ExprVisitor();
+    virtual ~ExprVisitor() = default;
 
-    virtual Object Visit(const Binary &expr) = 0;
-    virtual Object Visit(const Grouping &expr) = 0;
-    virtual Object Visit(const Literal &expr) = 0;
-    virtual Object Visit(const Unary &expr) = 0;
+    virtual T VisitBinaryExpr(const Binary &expr) = 0;
+    virtual T VisitGroupingExpr(const Grouping &expr) = 0;
+    virtual T VisitLiteralExpr(const Literal &expr) = 0;
+    virtual T VisitUnaryExpr(const Unary &expr) = 0;
 };
 
 class Expr
@@ -25,7 +25,7 @@ class Expr
   public:
     virtual ~Expr();
 
-    virtual Object Accept(ExprVisitor &visitor) = 0;
+    virtual Object Accept(ExprVisitor<Object> &visitor) = 0;
 };
 
 class Binary : public Expr
@@ -38,7 +38,7 @@ class Binary : public Expr
     const Token m_op;
     const std::unique_ptr<Expr> m_right;
 
-    Object Accept(ExprVisitor &visitor) override;
+    Object Accept(ExprVisitor<Object> &visitor) override;
 };
 
 class Grouping : public Expr
@@ -49,7 +49,7 @@ class Grouping : public Expr
 
     const std::unique_ptr<Expr> m_expression;
 
-    Object Accept(ExprVisitor &visitor) override;
+    Object Accept(ExprVisitor<Object> &visitor) override;
 };
 
 class Literal : public Expr
@@ -60,7 +60,7 @@ class Literal : public Expr
 
     const Object m_value;
 
-    Object Accept(ExprVisitor &visitor) override;
+    Object Accept(ExprVisitor<Object> &visitor) override;
 };
 
 class Unary : public Expr
@@ -72,7 +72,7 @@ class Unary : public Expr
     const Token m_op;
     const std::unique_ptr<Expr> m_right;
 
-    Object Accept(ExprVisitor &visitor) override;
+    Object Accept(ExprVisitor<Object> &visitor) override;
 };
 
 #endif // EXPR_HPP

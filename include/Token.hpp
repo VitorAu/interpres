@@ -21,6 +21,7 @@ class Token
     ~Token();
 
     const std::string Stringify() const;
+    const std::string GetLexeme() const;
 };
 
 #endif // TOKEN_HPP
