@@ -14,6 +14,7 @@ target_sources(interpres
   src/Token.cpp
   src/Scanner.cpp
   src/Expr.cpp
+  src/AstPrinter.cpp
 )
 target_include_directories(interpres
   PRIVATE
