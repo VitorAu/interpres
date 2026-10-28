@@ -1,12 +1,15 @@
 #include "Interpres.hpp"
 
+#include "AstPrinter.hpp"
 #include "ErrorHandler.hpp"
+#include "Parser.hpp"
 #include "Scanner.hpp"
 #include <cstddef>
 #include <cstdlib>
 #include <fstream>
 #include <ios>
 #include <iostream>
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -58,9 +61,11 @@ void Interpres::Run(const std::string &source)
 {
     Scanner scanner(source);
     std::vector<Token> tokens = scanner.ScanTokens();
+    Parser parser(tokens);
+    auto expr = parser.Parse();
 
-    for (Token &token : tokens)
-    {
-        std::cout << token.Stringify() << std::endl;
-    }
+    if (ErrorHandler::m_hadError) return;
+    AstPrinter printer;
+
+    std::cout << printer.Print(*expr) << std::endl;
 }

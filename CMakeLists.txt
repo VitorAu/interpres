@@ -15,6 +15,7 @@ target_sources(interpres
   src/Scanner.cpp
   src/Expr.cpp
   src/AstPrinter.cpp
+  src/Parser.cpp
 )
 target_include_directories(interpres
   PRIVATE

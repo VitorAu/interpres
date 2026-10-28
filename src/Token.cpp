@@ -35,6 +35,24 @@ const std::string Token::Stringify() const
 
 const std::string Token::GetLexeme() const
 {
-  std::string aux = this->m_lexeme;
+    std::string aux = this->m_lexeme;
+    return aux;
+}
+
+const TokenType Token::GetTokenType() const
+{
+    TokenType aux = this->m_tokenType;
+    return aux;
+}
+
+const Object Token::GetLiteral() const
+{
+    Object aux = this->m_literal;
+    return aux;
+}
+
+const int Token::GetLine() const
+{
+  int aux = this->m_line;
   return aux;
 }

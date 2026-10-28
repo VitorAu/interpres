@@ -22,6 +22,9 @@ class Token
 
     const std::string Stringify() const;
     const std::string GetLexeme() const;
+    const TokenType GetTokenType() const;
+    const Object GetLiteral() const;
+    const int GetLine() const;
 };
 
 #endif // TOKEN_HPP
