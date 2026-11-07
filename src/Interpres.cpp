@@ -61,11 +61,17 @@ void Interpres::Run(const std::string &source)
 {
     Scanner scanner(source);
     std::vector<Token> tokens = scanner.ScanTokens();
-    Parser parser(tokens);
-    auto expr = parser.Parse();
 
-    if (ErrorHandler::m_hadError) return;
-    AstPrinter printer;
+    for (const Token &token : tokens)
+    {
+        std::cout << token.Stringify() << std::endl;
+    }
 
-    std::cout << printer.Print(*expr) << std::endl;
+    // Parser parser(tokens);
+    // auto expr = parser.Parse();
+
+    // if (ErrorHandler::m_hadError) return;
+    // AstPrinter printer;
+
+    // std::cout << printer.Print(*expr) << std::endl;
 }

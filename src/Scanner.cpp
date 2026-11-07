@@ -138,7 +138,18 @@ void Scanner::ScanToken()
       case '>': AddToken(this->Match('=') ? TokenType::GREATER_EQUAL : TokenType::GREATER); break;
 
       case '/':
-      if(this->Match('=')) while(this->Peek() != '\n' && !this->IsAtEnd()) this->Advance();
+      if(this->Match('/')) while(this->Peek() != '\n' && !this->IsAtEnd()) this->Advance();
+      else if(this->Match('*')) {
+        while(this->Peek() != '*' && PeekNext() != '/' && !this->IsAtEnd()) {
+          if(this->Peek() == '\n') this->m_line++;   
+          this->Advance();
+        }
+        if(!this->IsAtEnd()) 
+        {
+          this->Advance();
+          this->Advance();
+        }
+      }
       else AddToken(TokenType::SLASH);
       break;
 
